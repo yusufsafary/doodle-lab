@@ -16,14 +16,60 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: yarn install
 
       - name: Build
-        run: npm run build
+        run: yarn build
         env:
           CI: false
 
       - name: Deploy to Vercel
-        run: npx vercel@latest --prod --token=${{ secrets.VERCEL_TOKEN }} --yes --name=doodle-lab
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          const https = require('https');
+          const TOKEN = process.env.VERCEL_TOKEN;
+          const TEAM_ID = 'team_FQL2L51QuUYN5gsM5ja91r17';
+          const PROJECT_ID = 'prj_f3MpBHxUWZdM9umcfNJdqsm7q6Mx';
+          const DIST = './dist';
+          function apiRequest(method, urlPath, body) {
+            return new Promise((resolve, reject) => {
+              const data = body ? JSON.stringify(body) : null;
+              const options = {
+                hostname: 'api.vercel.com',
+                path: urlPath + (urlPath.includes('?') ? '&' : '?') + 'teamId=' + TEAM_ID,
+                method,
+                headers: { 'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json', ...(data ? { 'Content-Length': Buffer.byteLength(data) } : {}) }
+              };
+              const req = https.request(options, res => {
+                let raw = '';
+                res.on('data', c => raw += c);
+                res.on('end', () => { try { resolve(JSON.parse(raw)); } catch(e) { resolve(raw); } });
+              });
+              req.on('error', reject);
+              if (data) req.write(data);
+              req.end();
+            });
+          }
+          function walk(dir, base) {
+            const result = [];
+            for (const f of fs.readdirSync(dir)) {
+              const full = path.join(dir, f);
+              const rel = base ? base + '/' + f : f;
+              if (fs.statSync(full).isDirectory()) result.push(...walk(full, rel));
+              else result.push({ full, rel });
+            }
+            return result;
+          }
+          async function main() {
+            const files = walk(DIST);
+            const deployFiles = files.map(({ full, rel }) => ({ file: rel, data: fs.readFileSync(full).toString('base64'), encoding: 'base64' }));
+            const result = await apiRequest('POST', '/v13/deployments', { name: 'doodle-lab', project: PROJECT_ID, target: 'production', files: deployFiles });
+            if (result.error) { console.error('Deploy error:', JSON.stringify(result.error)); process.exit(1); }
+            console.log('Deployed:', result.url, '| Status:', result.readyState);
+          }
+          main().catch(e => { console.error(e); process.exit(1); });
+          "
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
