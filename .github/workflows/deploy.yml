@@ -13,13 +13,18 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        env:
+          NODE_ENV: development
 
       - name: Build
         run: npm run build
+        env:
+          CI: false
+          NODE_ENV: production
 
       - name: Deploy to Vercel
-        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes --name=doodle-lab
+        run: npx vercel@latest --prod --token=${{ secrets.VERCEL_TOKEN }} --yes --name=doodle-lab
