@@ -42,16 +42,16 @@ export default function Gallery() {
 
       <main className="pt-24 md:pt-32 pb-16 px-4 md:px-6 max-w-7xl mx-auto w-full flex-1">
 
-        {/* Header — stacked mobile, row md */}
+        {/* Header: stacked mobile, row md */}
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between mb-10">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tighter mb-2">
               Community <span className="text-primary">Gallery</span>
             </h1>
-            <p className="text-muted-foreground font-mono text-sm">Explore creations from the Lab.</p>
+            <p className="text-muted-foreground font-mono text-sm">What people made this week.</p>
           </div>
 
-          {/* Filter tabs — horizontal scroll on mobile */}
+          {/* Filter tabs: horizontal scroll on mobile */}
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
             {filters.map((filter) => (
               <button
@@ -66,7 +66,7 @@ export default function Gallery() {
           </div>
         </div>
 
-        {/* Grid — 2 cols mobile, 3 sm, 4 lg */}
+        {/* Grid: 2 cols mobile, 3 sm, 4 lg */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
           {filteredGallery.map((item, index) => (
             <motion.div

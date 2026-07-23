@@ -18,7 +18,7 @@ export default function Login() {
         <div className="w-full max-w-md bg-card border border-white/10 p-6 md:p-8 rounded-3xl backdrop-blur-xl">
           <div className="text-center mb-7">
             <h1 className="text-2xl md:text-3xl font-bold mb-2">Welcome back</h1>
-            <p className="text-muted-foreground text-sm">Enter your details to access the lab.</p>
+            <p className="text-muted-foreground text-sm">Good to see you back.</p>
           </div>
 
           <form className="space-y-4 mb-5">

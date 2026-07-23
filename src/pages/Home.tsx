@@ -80,7 +80,7 @@ export default function Home() {
           </motion.p>
         </div>
 
-        {/* Steps — 1 col mobile, 3 col sm+ */}
+        {/* Steps: 1 col mobile, 3 col sm+ */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -144,7 +144,7 @@ export default function Home() {
                     ))}
                   </div>
 
-                  {/* Content — stacked mobile, side-by-side md */}
+                  {/* Content: stacked mobile, side-by-side md */}
                   <div className="flex flex-col md:grid md:grid-cols-2 gap-6">
 
                     {/* Input */}

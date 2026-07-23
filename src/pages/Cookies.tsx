@@ -23,7 +23,7 @@ export default function Cookies() {
         >
           <p className="text-xs font-mono text-muted-foreground mb-3 uppercase tracking-widest">Legal</p>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tighter mb-3">Cookie Policy</h1>
-          <p className="text-sm text-muted-foreground font-mono">Last updated: January 2025</p>
+          <p className="text-sm text-muted-foreground font-mono">Last updated: July 2026</p>
         </motion.div>
 
         <div className="space-y-10">

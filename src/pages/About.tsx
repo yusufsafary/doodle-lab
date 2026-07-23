@@ -46,7 +46,7 @@ export default function About() {
             transition={{ delay: 0.1 }}
             className="text-lg md:text-xl text-muted-foreground font-mono"
           >
-            You do not need to be an artist. You need an idea.
+            No portfolio required. No tutorials. Just open it and make something.
           </motion.p>
         </section>
 
@@ -77,12 +77,12 @@ export default function About() {
         {/* Team */}
         <section className="px-4 md:px-6 max-w-4xl mx-auto mb-20 md:mb-28">
           <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-3">
-            Made by people who love making things
+            Small team. One focus.
           </h2>
           <p className="text-muted-foreground leading-relaxed mb-10 max-w-xl">
-            Doodle Lab started as a weekend experiment. We wanted to see what would happen
-            if we gave a simple image model a clean interface and got out of the way.
-            The results surprised us.
+            We got tired of AI image tools that required a setup guide just to get started.
+            Doodle Lab is the version we actually wanted to use: upload, pick a style, done.
+            No account wall. No watermarks on the first run.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {team.map(({ name, role, initials, color }) => (

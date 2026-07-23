@@ -49,7 +49,7 @@ export function TopNav() {
           </Link>
         </div>
 
-        {/* Hamburger — mobile only */}
+        {/* Hamburger: mobile only */}
         <button
           onClick={() => setOpen(true)}
           aria-label="Open menu"

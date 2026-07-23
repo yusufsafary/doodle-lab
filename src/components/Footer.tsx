@@ -32,7 +32,7 @@ export function Footer() {
               Reimagine anything.
             </p>
             <p className="text-xs text-white/30 mt-2">
-              2025 Doodle Lab. All rights reserved.
+              2026 Doodle Lab. All rights reserved.
             </p>
           </div>
 

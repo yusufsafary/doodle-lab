@@ -16,7 +16,7 @@ export default function Signup() {
         <div className="w-full max-w-md bg-card border border-white/10 p-6 md:p-8 rounded-3xl backdrop-blur-xl">
           <div className="text-center mb-7">
             <h1 className="text-2xl md:text-3xl font-bold mb-2">Create Account</h1>
-            <p className="text-muted-foreground text-sm">Join the lab and start creating.</p>
+            <p className="text-muted-foreground text-sm">Your first image is 30 seconds away.</p>
           </div>
 
           <form className="space-y-4 mb-5">
