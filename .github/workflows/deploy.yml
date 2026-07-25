@@ -8,6 +8,10 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: team_FQL2L51QuUYN5gsM5ja91r17
+      VERCEL_PROJECT_ID: prj_f3MpBHxUWZdM9umcfNJdqsm7q6Mx
+
     steps:
       - uses: actions/checkout@v4
 
@@ -18,73 +22,14 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build
-        run: yarn build
-        env:
-          CI: false
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
 
-      - name: Deploy to Vercel
-        run: |
-          node -e "
-          const fs = require('fs');
-          const path = require('path');
-          const https = require('https');
-          const TOKEN = process.env.VERCEL_TOKEN;
-          const TEAM_ID = 'team_FQL2L51QuUYN5gsM5ja91r17';
-          const PROJECT_ID = 'prj_f3MpBHxUWZdM9umcfNJdqsm7q6Mx';
-          const DIST = './dist';
-          function apiRequest(method, urlPath, body) {
-            return new Promise((resolve, reject) => {
-              const data = body ? JSON.stringify(body) : null;
-              const options = {
-                hostname: 'api.vercel.com',
-                path: urlPath + (urlPath.includes('?') ? '&' : '?') + 'teamId=' + TEAM_ID,
-                method,
-                headers: { 'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json', ...(data ? { 'Content-Length': Buffer.byteLength(data) } : {}) }
-              };
-              const req = https.request(options, res => {
-                let raw = '';
-                res.on('data', c => raw += c);
-                res.on('end', () => { try { resolve(JSON.parse(raw)); } catch(e) { resolve(raw); } });
-              });
-              req.on('error', reject);
-              if (data) req.write(data);
-              req.end();
-            });
-          }
-          function walk(dir, base) {
-            const result = [];
-            for (const f of fs.readdirSync(dir)) {
-              const full = path.join(dir, f);
-              const rel = base ? base + '/' + f : f;
-              if (fs.statSync(full).isDirectory()) result.push(...walk(full, rel));
-              else result.push({ full, rel });
-            }
-            return result;
-          }
-          function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-          async function waitForReady(deploymentId) {
-            for (let i = 0; i < 30; i++) {
-              await sleep(10000);
-              const d = await apiRequest('GET', '/v13/deployments/' + deploymentId);
-              console.log('Status:', d.readyState || d.status);
-              if (d.readyState === 'READY' || d.status === 'READY') return true;
-              if (d.readyState === 'ERROR' || d.status === 'ERROR') { console.error('Deployment errored'); return false; }
-            }
-            console.error('Timed out waiting for deployment');
-            return false;
-          }
-          async function main() {
-            const files = walk(DIST);
-            const deployFiles = files.map(({ full, rel }) => ({ file: rel, data: fs.readFileSync(full).toString('base64'), encoding: 'base64' }));
-            const result = await apiRequest('POST', '/v13/deployments', { name: 'doodle-lab', project: PROJECT_ID, target: 'production', files: deployFiles });
-            if (result.error) { console.error('Deploy error:', JSON.stringify(result.error)); process.exit(1); }
-            console.log('Deployment created:', result.url, '| ID:', result.id, '| Status:', result.readyState);
-            const ready = await waitForReady(result.id);
-            if (!ready) process.exit(1);
-            console.log('Deployment is READY at:', result.url);
-          }
-          main().catch(e => { console.error(e); process.exit(1); });
-          "
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      - name: Pull Vercel environment
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build project
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy to production
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
