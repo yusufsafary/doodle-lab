@@ -62,12 +62,27 @@ jobs:
             }
             return result;
           }
+          function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+          async function waitForReady(deploymentId) {
+            for (let i = 0; i < 30; i++) {
+              await sleep(10000);
+              const d = await apiRequest('GET', '/v13/deployments/' + deploymentId);
+              console.log('Status:', d.readyState || d.status);
+              if (d.readyState === 'READY' || d.status === 'READY') return true;
+              if (d.readyState === 'ERROR' || d.status === 'ERROR') { console.error('Deployment errored'); return false; }
+            }
+            console.error('Timed out waiting for deployment');
+            return false;
+          }
           async function main() {
             const files = walk(DIST);
             const deployFiles = files.map(({ full, rel }) => ({ file: rel, data: fs.readFileSync(full).toString('base64'), encoding: 'base64' }));
             const result = await apiRequest('POST', '/v13/deployments', { name: 'doodle-lab', project: PROJECT_ID, target: 'production', files: deployFiles });
             if (result.error) { console.error('Deploy error:', JSON.stringify(result.error)); process.exit(1); }
-            console.log('Deployed:', result.url, '| Status:', result.readyState);
+            console.log('Deployment created:', result.url, '| ID:', result.id, '| Status:', result.readyState);
+            const ready = await waitForReady(result.id);
+            if (!ready) process.exit(1);
+            console.log('Deployment is READY at:', result.url);
           }
           main().catch(e => { console.error(e); process.exit(1); });
           "
