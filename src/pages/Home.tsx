@@ -15,6 +15,7 @@ export default function Home() {
   const [prompt, setPrompt] = useState('');
   const [selectedStyle, setSelectedStyle] = useState<'Fantasy' | 'Realistic' | 'Anime' | 'Abstract'>('Abstract');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const artCanvasRef = useRef<HTMLCanvasElement>(null);
   const { toast } = useToast();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +41,16 @@ export default function Home() {
   const copyLink = () => {
     navigator.clipboard.writeText(window.location.href);
     toast({ title: 'Link copied!', description: 'Share your creation with the world.' });
+  };
+
+  const handleDownload = () => {
+    const canvas = artCanvasRef.current;
+    if (!canvas) return;
+    const link = document.createElement('a');
+    link.download = `doodlelab-${Date.now()}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+    toast({ title: 'Downloading...', description: 'Your creation is being saved.' });
   };
 
   const steps = [
@@ -243,6 +254,7 @@ export default function Home() {
                         <div className="absolute inset-0 flex flex-col">
                           <div className="flex-1 p-3 pb-0 overflow-hidden">
                             <CanvasArt
+                              ref={artCanvasRef}
                               seed={generatedArt.seed}
                               styleType={generatedArt.style}
                               className="w-full h-full object-cover rounded-xl"
@@ -255,7 +267,10 @@ export default function Home() {
                             >
                               <LinkIcon className="w-4 h-4" /> Copy Link
                             </button>
-                            <button className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-black transition-colors py-3 rounded-xl font-bold text-sm">
+                            <button
+                              onClick={handleDownload}
+                              className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-black transition-colors py-3 rounded-xl font-bold text-sm"
+                            >
                               <Download className="w-4 h-4" /> Download
                             </button>
                           </div>

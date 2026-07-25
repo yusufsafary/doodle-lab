@@ -2,8 +2,28 @@ import { Link } from 'wouter';
 import { Github } from 'lucide-react';
 import { SiGoogle } from 'react-icons/si';
 import { DoodleLabLogo } from '@/components/DoodleLabLogo';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email || !password) {
+      toast({ title: 'Missing fields', description: 'Please enter your email and password.', variant: 'destructive' });
+      return;
+    }
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      toast({ title: 'Coming soon', description: 'Authentication will be available shortly.' });
+    }, 800);
+  };
+
   return (
     <div className="min-h-screen bg-black text-white flex flex-col relative overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0 flex items-center justify-center">
@@ -21,11 +41,13 @@ export default function Login() {
             <p className="text-muted-foreground text-sm">Good to see you back.</p>
           </div>
 
-          <form className="space-y-4 mb-5">
+          <form className="space-y-4 mb-5" onSubmit={handleSubmit} noValidate>
             <div>
               <label className="text-sm font-medium text-muted-foreground block mb-2">Email</label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="artist@example.com"
                 autoComplete="email"
                 className="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary transition-all text-sm"
@@ -38,14 +60,20 @@ export default function Login() {
               </div>
               <input
                 type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
                 autoComplete="current-password"
                 className="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary transition-all text-sm"
               />
             </div>
 
-            <button type="button" className="w-full bg-primary hover:bg-primary/90 text-black font-bold py-3 rounded-xl transition-colors mt-1 text-sm">
-              Sign In
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-primary hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed text-black font-bold py-3 rounded-xl transition-colors mt-1 text-sm"
+            >
+              {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 
@@ -59,10 +87,18 @@ export default function Login() {
           </div>
 
           <div className="grid grid-cols-2 gap-3 mb-5">
-            <button className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/5 py-3 rounded-xl transition-colors text-sm font-medium">
+            <button
+              type="button"
+              onClick={() => toast({ title: 'Coming soon', description: 'Google sign-in will be available shortly.' })}
+              className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/5 py-3 rounded-xl transition-colors text-sm font-medium"
+            >
               <SiGoogle className="w-4 h-4" /> Google
             </button>
-            <button className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/5 py-3 rounded-xl transition-colors text-sm font-medium">
+            <button
+              type="button"
+              onClick={() => toast({ title: 'Coming soon', description: 'GitHub sign-in will be available shortly.' })}
+              className="flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 border border-white/5 py-3 rounded-xl transition-colors text-sm font-medium"
+            >
               <Github className="w-4 h-4" /> GitHub
             </button>
           </div>
