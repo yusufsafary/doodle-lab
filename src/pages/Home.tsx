@@ -40,7 +40,7 @@ export default function Home() {
           </motion.p>
         </div>
 
-        {/* Agentic Pass strip: jalur cepat ke section mint */}
+        {/* Doodle NFT strip: jalur cepat ke section mint */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ export default function Home() {
           <span className="flex items-center gap-2.5 text-sm text-white/85">
             <BinanceLogo className="h-5 w-5 shrink-0" />
             <span>
-              <span className="font-semibold text-white">Doodle Agentic Pass.</span> Mint
+              <span className="font-semibold text-white">Doodle NFT.</span> Mint
               free, earn <span className="font-semibold text-white">250,000 $DLAB</span> per NFT
             </span>
           </span>

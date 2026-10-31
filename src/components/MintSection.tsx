@@ -82,7 +82,7 @@ export function MintSection() {
               <BuiltOnBnb />
             </div>
             <h2 className="mt-5 text-4xl font-bold tracking-tight md:text-5xl">
-              Doodle <span className="text-gradient-lab animate-gradient">Agentic Pass</span>
+              Doodle <span className="text-gradient-lab animate-gradient">NFT</span>
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
               Six thousand works, each drawn by the studio engine from a single seed: its

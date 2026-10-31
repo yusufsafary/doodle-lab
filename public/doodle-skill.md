@@ -1,4 +1,4 @@
-# Doodle Lab Agentic Pass (DLAB): Agent Mint Skill
+# Doodle NFT (DLAB): Agent Mint Skill
 
 For Binance Agents (Binance Agentic Wallet) minting Doodle Lab NFTs on BNB Chain.
 
