@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #3643",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Cat in the Abstract manner, drawn by the studio engine from seed 3643. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/3643.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Abstract"
     },
     {
-      "trait_type": "Shapes",
-      "value": 9
+      "trait_type": "Subject",
+      "value": "Cat"
     },
     {
-      "trait_type": "Background",
-      "value": "#000000"
+      "trait_type": "Mood",
+      "value": "Day"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 3643
     },
     {
       "trait_type": "Bonus",

@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #3546",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Rocket in the Anime manner, drawn by the studio engine from seed 3546. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/3546.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Anime"
     },
     {
-      "trait_type": "Shapes",
-      "value": 10
+      "trait_type": "Subject",
+      "value": "Rocket"
     },
     {
-      "trait_type": "Background",
-      "value": "#FF9A9E"
+      "trait_type": "Mood",
+      "value": "Night"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 3546
     },
     {
       "trait_type": "Bonus",
