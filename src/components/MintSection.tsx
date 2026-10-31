@@ -85,11 +85,13 @@ export function MintSection() {
               The Doodle <span className="text-gradient-lab animate-gradient">Agentic Pass</span>
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Each Doodle is drawn by the same generative engine as the studio above, seeded
-              by its token number, so no two are alike. Minting is free through your Binance
-              Agent, and every NFT pays a{' '}
-              <span className="font-semibold text-white">250,000 $DLAB</span> bonus on the
-              spot. Mint the full 20 and you hold 5,000,000 $DLAB.
+              Read as an archive of generative drawing, the Pass gathers 6,000 works, each
+              drawn by the studio engine from a single seed: its token number. No two works
+              are alike, and none can be drawn twice. Holding a Binance Agent ID admits the
+              holder to mint, and every work arrives with an allocation of{' '}
+              <span className="font-semibold text-white">250,000 $DLAB</span>, issued in the
+              same transaction. Mint the full twenty and the allocation totals 5,000,000
+              $DLAB.
             </p>
 
             <ol className="mt-8 flex flex-col gap-4">
@@ -143,19 +145,19 @@ export function MintSection() {
                 />
               </div>
 
-              <dl className="mt-6 grid grid-cols-2 gap-4 font-mono text-sm">
+              <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">Price</dt>
+                  <dt className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Price</dt>
                   <dd className="mt-1 font-bold text-white">Free</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">
+                  <dt className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                     Per wallet
                   </dt>
                   <dd className="mt-1 font-bold text-white">Max {DLAB.maxPerWallet}</dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">
+                  <dt className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                     Bonus / NFT
                   </dt>
                   <dd className="mt-1 flex items-center gap-1.5 font-bold text-white">
@@ -163,7 +165,7 @@ export function MintSection() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs uppercase tracking-widest text-muted-foreground">
+                  <dt className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                     Bonus left
                   </dt>
                   <dd className="mt-1 font-bold text-white">
@@ -182,7 +184,7 @@ export function MintSection() {
                     onChange={(e) => setAddress(e.target.value)}
                     placeholder="0x…"
                     spellCheck={false}
-                    className="w-full rounded-xl border border-white/10 bg-black/50 p-3 font-mono text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full rounded-xl border border-white/10 bg-black/50 p-3 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                   <button
                     type="button"

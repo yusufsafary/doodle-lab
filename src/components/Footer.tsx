@@ -45,6 +45,7 @@ export function Footer() {
               </p>
               <ul className="flex flex-col gap-3">
                 <li><Link href="/" className="text-sm text-muted-foreground hover:text-white transition-colors">Home</Link></li>
+                <li><Link href="/studio" className="text-sm text-muted-foreground hover:text-white transition-colors">Studio</Link></li>
                 <li><Link href="/gallery" className="text-sm text-muted-foreground hover:text-white transition-colors">Gallery</Link></li>
                 <li><Link href="/how-to" className="text-sm text-muted-foreground hover:text-white transition-colors">How To</Link></li>
               </ul>

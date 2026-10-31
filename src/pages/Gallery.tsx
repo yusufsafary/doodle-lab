@@ -1,40 +1,39 @@
 import { TopNav } from '@/components/TopNav';
 import { Footer } from '@/components/Footer';
-import { CanvasArt } from '@/components/CanvasArt';
 import { motion } from 'framer-motion';
-import { Heart, Eye } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import { useState, useMemo } from 'react';
+import { useLocation } from 'wouter';
 
-const SEEDS = [
-  12345, 23456, 34567, 45678, 56789, 67890,
-  11111, 22222, 33333, 44444, 55555, 66666,
-  77777, 88888, 99999, 10101,
-];
-const STYLES = ['Abstract', 'Fantasy', 'Realistic', 'Anime'] as const;
-const CREATORS = [
-  'sora_m', 'pixel_jo', 'neon_k', 'artbyrae',
-  'luminary', 'sketch_v', 'idrawfast', 'wavypng',
-  'coldbrush', 'iamtomo', 'glitch_s', 'hana_ai',
-  'inkdrop', 'mirak', 'form_less', 'sunsetpx',
-];
+// Koleksi asli Doodle Lab (DLAB): gaya setiap token mengikuti generator
+// metadata (STYLES[tokenId % 4] pada scripts/generate-metadata.mjs).
+const COLLECTION_STYLES = ['Fantasy', 'Realistic', 'Anime', 'Abstract'] as const;
+const FILTERS = ['All', 'Abstract', 'Fantasy', 'Realistic', 'Anime'] as const;
+const SHOWN = 48;
 
-const mockGallery = SEEDS.map((seed, i) => ({
-  id: i,
-  seed,
-  creator: CREATORS[i],
-  likes: 14 + i * 17,
-  style: STYLES[i % STYLES.length],
-}));
+const works = Array.from({ length: SHOWN }, (_, i) => {
+  const id = i + 1;
+  return { id, style: COLLECTION_STYLES[id % COLLECTION_STYLES.length] };
+});
 
-const filters = ['All', ...STYLES];
+const base = import.meta.env.BASE_URL;
 
 export default function Gallery() {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState<(typeof FILTERS)[number]>('All');
+  const [, navigate] = useLocation();
 
-  const filteredGallery = useMemo(
-    () => activeFilter === 'All' ? mockGallery : mockGallery.filter((item) => item.style === activeFilter),
+  const filtered = useMemo(
+    () => (activeFilter === 'All' ? works : works.filter((w) => w.style === activeFilter)),
     [activeFilter],
   );
+
+  const goMint = () => {
+    navigate('/');
+    setTimeout(
+      () => document.getElementById('mint')?.scrollIntoView({ behavior: 'smooth' }),
+      450,
+    );
+  };
 
   return (
     <div className="min-h-screen bg-black text-white flex flex-col">
@@ -46,14 +45,17 @@ export default function Gallery() {
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between mb-10">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tighter mb-2">
-              Community <span className="text-primary">Gallery</span>
+              The <span className="text-primary">Collection</span>
             </h1>
-            <p className="text-muted-foreground font-mono text-sm">What people made this week.</p>
+            <p className="text-muted-foreground font-mono text-sm">
+              6,000 works, each drawn by the Lab engine from its token seed. Showing the
+              first 48.
+            </p>
           </div>
 
           {/* Filter tabs: horizontal scroll on mobile */}
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
-            {filters.map((filter) => (
+            {FILTERS.map((filter) => (
               <button
                 key={filter}
                 onClick={() => setActiveFilter(filter)}
@@ -68,37 +70,39 @@ export default function Gallery() {
 
         {/* Grid: 2 cols mobile, 3 sm, 4 lg */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
-          {filteredGallery.map((item, index) => (
+          {filtered.map((work, index) => (
             <motion.div
-              key={item.id}
+              key={work.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.04 }}
+              transition={{ delay: (index % 12) * 0.04 }}
               className="group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 aspect-square"
             >
-              <CanvasArt
-                seed={item.seed}
-                styleType={item.style}
-                width={400}
-                height={400}
+              <img
+                src={`${base}metadata/art/${work.id}.svg`}
+                alt={`Doodle Lab #${work.id}`}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
                 <div className="flex justify-end gap-2">
-                  <button className="p-2 rounded-full bg-white/20 hover:bg-primary hover:text-black transition-colors backdrop-blur-md" aria-label="Like">
-                    <Heart className="w-3.5 h-3.5" />
-                  </button>
-                  <button className="p-2 rounded-full bg-white/20 hover:bg-white transition-colors text-white hover:text-black backdrop-blur-md" aria-label="View">
+                  <a
+                    href={`${base}metadata/${work.id}.json`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="p-2 rounded-full bg-white/20 hover:bg-white transition-colors text-white hover:text-black backdrop-blur-md"
+                    aria-label={`Metadata of Doodle Lab #${work.id}`}
+                  >
                     <Eye className="w-3.5 h-3.5" />
-                  </button>
+                  </a>
                 </div>
                 <div>
-                  <div className="text-xs font-mono text-primary mb-0.5">{item.style}</div>
-                  <div className="font-semibold text-sm">{item.creator}</div>
-                  <div className="text-xs text-white/60 flex items-center gap-1 mt-0.5">
-                    <Heart className="w-3 h-3" /> {item.likes}
+                  <div className="text-xs font-mono text-primary mb-0.5">{work.style}</div>
+                  <div className="font-semibold text-sm">Doodle Lab #{work.id}</div>
+                  <div className="text-xs text-white/60 mt-0.5">
+                    Mint bonus 250,000 $DLAB
                   </div>
                 </div>
               </div>
@@ -106,11 +110,27 @@ export default function Gallery() {
           ))}
         </div>
 
-        {filteredGallery.length === 0 && (
+        {filtered.length === 0 && (
           <div className="text-center py-20 text-muted-foreground font-mono text-sm">
-            No creations for this style yet.
+            No works in this manner yet.
           </div>
         )}
+
+        {/* Penutup: arsip penuh + jalur mint */}
+        <div className="mt-12 flex flex-col items-center gap-4 text-center">
+          <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
+            The full archive of 6,000 works is published in the collection metadata. Each
+            work is minted free through a Binance Agent and carries its $DLAB allocation
+            with it.
+          </p>
+          <button
+            type="button"
+            onClick={goMint}
+            className="rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-black transition-colors hover:bg-primary/90"
+          >
+            Mint a Doodle
+          </button>
+        </div>
       </main>
 
       <Footer />

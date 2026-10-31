@@ -4,6 +4,7 @@ import { DoodleLabLogo } from '@/components/DoodleLabLogo';
 
 const navLinks = [
   { label: 'Home', href: '/' },
+  { label: 'Studio', href: '/studio' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'How To', href: '/how-to' },
   { label: 'About', href: '/about' },
