@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #5280",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Fox in the Fantasy manner, drawn by the studio engine from seed 5280. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/5280.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Fantasy"
     },
     {
-      "trait_type": "Shapes",
-      "value": 12
+      "trait_type": "Subject",
+      "value": "Fox"
     },
     {
-      "trait_type": "Background",
-      "value": "#2a0845"
+      "trait_type": "Mood",
+      "value": "Dawn"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 5280
     },
     {
       "trait_type": "Bonus",
