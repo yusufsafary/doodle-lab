@@ -7,8 +7,9 @@ const ART_BASE = `${import.meta.env.BASE_URL}metadata/art/`;
 const LISTINGS = [8, 13, 70, 9, 10, 16];
 const MANNERS = ['Fantasy', 'Realistic', 'Anime', 'Abstract'];
 
-// Pasar terkunci sampai 1 November 2026 pukul 06.18 WIB (12 jam sejak perintah Yusup 31 Okt 18:18), lalu terbuka sendiri.
-const UNLOCK_AT = new Date('2026-11-01T06:18:00+07:00').getTime();
+// Pasar terkunci 12 jam sejak perintah Yusup 31 Okt 18:18 WIB, lalu terbuka sendiri.
+// Waktu buka ditampilkan dalam UTC: 31 Oktober 2026 pukul 23.18 UTC (sama dengan 1 Nov 06.18 WIB).
+const UNLOCK_AT = new Date('2026-10-31T23:18:00Z').getTime();
 
 function countdownLabel(ms: number): string {
   const totalMinutes = Math.max(0, Math.floor(ms / 60000));
@@ -38,7 +39,7 @@ export function MarketSection() {
             }`}
           >
             {locked ? <Lock className="h-3.5 w-3.5" /> : <span className="h-2 w-2 rounded-full bg-black" />}
-            {locked ? 'Locked until tomorrow' : 'Market open'}
+            {locked ? 'Locked · Opens 23.18 UTC' : 'Market open'}
           </span>
           <span className="flex items-center gap-2.5">
             <ElementLogo className="h-6 w-6 shrink-0 object-contain" />
@@ -104,8 +105,7 @@ export function MarketSection() {
                 </span>
                 <p className="mt-4 text-2xl font-bold tracking-tight">Market locked</p>
                 <p className="mt-1.5 max-w-sm text-sm leading-relaxed text-white/70">
-                  Trading opens tomorrow, 1 November 2026, at 06.18 WIB. Mint today, trade
-                  tomorrow.
+                  Trading opens 31 October 2026, at 23.18 UTC. Mint now, trade at open.
                 </p>
                 <span className="mt-4 rounded-full bg-white/10 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-white">
                   {countdownLabel(UNLOCK_AT - now)}
