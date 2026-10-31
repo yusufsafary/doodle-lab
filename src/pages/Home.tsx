@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import { Upload, Image as ImageIcon, Sparkles, Download, Link as LinkIcon, Info, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CanvasArt } from '@/components/CanvasArt';
+import { MintSection } from '@/components/MintSection';
 import { useToast } from '@/hooks/use-toast';
 
 export default function Home() {
@@ -290,6 +291,8 @@ export default function Home() {
           </AnimatePresence>
         </motion.div>
       </main>
+
+      <MintSection />
 
       <Footer />
     </div>
