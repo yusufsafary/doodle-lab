@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #20",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Hot Air Balloon in the Fantasy manner, drawn by the studio engine from seed 20. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/20.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Fantasy"
     },
     {
-      "trait_type": "Shapes",
-      "value": 5
+      "trait_type": "Subject",
+      "value": "Hot Air Balloon"
     },
     {
-      "trait_type": "Background",
-      "value": "#2a0845"
+      "trait_type": "Mood",
+      "value": "Dusk"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 20
     },
     {
       "trait_type": "Bonus",
