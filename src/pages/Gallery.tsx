@@ -41,7 +41,7 @@ export default function Gallery() {
     <div className="min-h-screen bg-black text-white flex flex-col">
       <TopNav />
 
-      <main className="pt-24 md:pt-32 pb-16 px-4 md:px-6 max-w-7xl mx-auto w-full flex-1">
+      <main className="pt-32 md:pt-40 pb-16 px-4 md:px-6 max-w-7xl mx-auto w-full flex-1">
 
         {/* Header: stacked mobile, row md */}
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between mb-10">

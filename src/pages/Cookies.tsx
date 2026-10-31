@@ -13,7 +13,7 @@ export default function Cookies() {
     <div className="min-h-screen bg-black text-white flex flex-col">
       <TopNav />
 
-      <main className="pt-24 md:pt-32 pb-16 flex-1 px-4 md:px-6 max-w-2xl mx-auto w-full">
+      <main className="pt-32 md:pt-40 pb-16 flex-1 px-4 md:px-6 max-w-2xl mx-auto w-full">
 
         {/* Heading */}
         <motion.div

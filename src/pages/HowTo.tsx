@@ -64,7 +64,7 @@ export default function HowTo() {
     <div className="min-h-screen bg-black text-white flex flex-col">
       <TopNav />
 
-      <main className="pt-24 md:pt-32 pb-16 flex-1">
+      <main className="pt-32 md:pt-40 pb-16 flex-1">
 
         {/* Hero */}
         <section className="px-4 md:px-6 max-w-3xl mx-auto text-center mb-16 md:mb-20">

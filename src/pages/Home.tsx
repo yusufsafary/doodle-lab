@@ -28,7 +28,7 @@ export default function Home() {
 
       <TopNav />
 
-      <main className="pt-24 md:pt-32 pb-16 px-4 md:px-6 max-w-6xl mx-auto w-full relative z-10 flex-1">
+      <main className="pt-32 md:pt-40 pb-16 px-4 md:px-6 max-w-6xl mx-auto w-full relative z-10 flex-1">
 
         {/* Header */}
         <div className="text-center mb-10 md:mb-16 space-y-4">

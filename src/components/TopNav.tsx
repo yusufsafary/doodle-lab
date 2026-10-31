@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'wouter';
 import { useState, useEffect } from 'react';
+import { Gift } from 'lucide-react';
 import { DoodleLabLogo } from '@/components/DoodleLabLogo';
 
 const navLinks = [
@@ -38,7 +39,15 @@ export function TopNav() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 py-4 bg-black/80 backdrop-blur-md border-b border-white/5">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        {/* Bar pengumuman tipis di paling atas */}
+        <div className="flex items-center justify-center gap-2 bg-[#F0B90B] px-4 py-1.5">
+          <Gift className="h-3.5 w-3.5 shrink-0 text-black" />
+          <p className="text-center text-[11px] font-semibold leading-tight text-black md:text-xs">
+            Holder airdrop: $10,000 in BNB for Doodle NFT holders.
+          </p>
+        </div>
+        <nav className="flex items-center justify-between px-5 py-4 bg-black/80 backdrop-blur-md border-b border-white/5">
         <DoodleLabLogo />
 
         {/* Desktop links */}
@@ -80,7 +89,8 @@ export function TopNav() {
           <span className="block w-5 h-0.5 bg-white rounded-full" />
           <span className="block w-4 h-0.5 bg-white rounded-full" />
         </button>
-      </nav>
+        </nav>
+      </div>
 
       {/* Mobile overlay */}
       {open && (
