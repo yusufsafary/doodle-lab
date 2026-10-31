@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #2318",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Owl in the Anime manner, drawn by the studio engine from seed 2318. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/2318.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Anime"
     },
     {
-      "trait_type": "Shapes",
-      "value": 11
+      "trait_type": "Subject",
+      "value": "Owl"
     },
     {
-      "trait_type": "Background",
-      "value": "#FF9A9E"
+      "trait_type": "Mood",
+      "value": "Day"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 2318
     },
     {
       "trait_type": "Bonus",
