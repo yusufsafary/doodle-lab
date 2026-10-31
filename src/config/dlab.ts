@@ -2,7 +2,7 @@
 // Alamat di bawah adalah alamat prediksi CREATE2 dari artefak deploy final
 // (deploy-info-dlab.json); terkonfirmasi persis saat deploy dieksekusi.
 export const DLAB = {
-  nftAddress: '0x06B3299b46dc39Def79f18A287A6e6db43715013',
+  nftAddress: '0xe7673eb3248bbA64e282b704feA01ecCb183D502',
   tokenAddress: '0x1b29D8523198c06BF6Ca0298eaAf0346239644c2',
   totalSupply: 6000,
   maxPerWallet: 21, // 1 free + 20 paid
