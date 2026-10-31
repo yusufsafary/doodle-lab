@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
-import { BadgeCheck, Bot, Coins, Minus, Plus, Search, Shuffle } from "lucide-react";
+import { BadgeCheck, Bot, Check, Coins, Copy, Minus, Plus, Search, Shuffle } from "lucide-react";
 import { DLAB, checkWallet, readMintState, subjectOf, type MintState } from '@/config/dlab';
 import { BuiltOnBnb, ElementLogo } from '@/components/BinanceLogo';
 
 const ADDRESS_RE = /^0x[0-9a-fA-F]{40}$/;
+
+const AGENT_PROMPT = `Mint a Doodle NFT for me on BNB Chain. Read the skill file at https://doodlelab.xyz/doodle-skill.md and follow it exactly. Check that my wallet holds a Binance Agent ID, read my exact price with priceFor, preview the transaction, then mint 1. My first mint is free of the paid fee, and every NFT comes with a bonus of 250,000 $DLAB.`;
 
 const ART_BASE = `${import.meta.env.BASE_URL}metadata/art/`;
 const RIVER_IDS = [3, 7, 42, 123, 555, 999, 2024, 2718, 3000, 4242, 5555, 6000];
@@ -30,6 +32,17 @@ export function MintSection() {
   } | null>(null);
   const [checkError, setCheckError] = useState('');
   const [seed, setSeed] = useState(2024);
+  const [copied, setCopied] = useState(false);
+
+  const onCopyPrompt = async () => {
+    try {
+      await navigator.clipboard.writeText(AGENT_PROMPT);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard tidak tersedia: teks prompt tetap bisa dipilih manual
+    }
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -156,6 +169,31 @@ export function MintSection() {
                 </a>
               </span>
             </p>
+
+            {/* Prompt agen: salin dan tempel ke agen pengguna */}
+            <div className="mt-6 rounded-2xl border border-white/10 bg-black/40 p-5">
+              <div className="flex items-center justify-between gap-3">
+                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  Agent prompt
+                </p>
+                <button
+                  type="button"
+                  onClick={onCopyPrompt}
+                  className={`flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-bold transition-colors ${
+                    copied ? 'bg-primary text-black' : 'bg-white/10 text-white hover:bg-white/20'
+                  }`}
+                >
+                  {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+                  {copied ? 'Copied' : 'Copy prompt'}
+                </button>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-white/85">
+                Paste this prompt into your Binance Agent and it mints for you:
+              </p>
+              <p className="mt-3 select-all whitespace-pre-wrap rounded-xl border border-white/10 bg-black/60 p-4 font-mono text-xs leading-relaxed text-white/80">
+                {AGENT_PROMPT}
+              </p>
+            </div>
 
             {/* Mesin seed: jelajahi karya dari nomornya */}
             <div className="mt-10 rounded-2xl border border-white/10 bg-black/40 p-5">

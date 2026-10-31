@@ -3,11 +3,10 @@ import { TopNav } from '@/components/TopNav';
 import { Footer } from '@/components/Footer';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { BinanceLogo, BnbChainLogo, ElementLogo } from '@/components/BinanceLogo';
+import { BnbChainLogo, ElementLogo } from '@/components/BinanceLogo';
 import { MintSection } from '@/components/MintSection';
 import { subjectOf } from '@/config/dlab';
 
-const FAN = [7, 123, 5555];
 const STYLE_TILES = [
   { style: 'Fantasy', id: 4 },
   { style: 'Realistic', id: 1 },
@@ -28,10 +27,10 @@ export default function Home() {
 
       <TopNav />
 
-      <main className="pt-32 md:pt-40 pb-16 px-4 md:px-6 max-w-6xl mx-auto w-full relative z-10 flex-1">
+      <main className="pt-32 md:pt-40 px-4 md:px-6 max-w-6xl mx-auto w-full relative z-10">
 
         {/* Header */}
-        <div className="text-center mb-10 md:mb-16 space-y-4">
+        <div className="text-center mb-8 md:mb-10 space-y-4">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -49,52 +48,12 @@ export default function Home() {
           </motion.p>
         </div>
 
-        {/* Doodle NFT strip: kartu undangan ke section mint */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15 }}
-          className="mb-6 overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-r from-primary/15 via-white/[0.04] to-[#FF6B6B]/10 backdrop-blur-sm"
-        >
-          <div className="flex flex-col items-center gap-4 px-5 py-4 sm:flex-row sm:gap-5 sm:px-6">
-            <div aria-hidden className="relative flex shrink-0 items-center py-1 pl-1 pr-2">
-              {FAN.map((id, i) => (
-                <img
-                  key={id}
-                  src={`${import.meta.env.BASE_URL}metadata/art/${id}.svg`}
-                  alt=""
-                  loading="lazy"
-                  className={`h-12 w-12 rounded-lg border-2 border-black object-cover shadow-lg ${
-                    i === 0 ? '-rotate-6' : i === 1 ? 'z-10 -ml-3 rotate-2' : '-ml-3 rotate-6'
-                  }`}
-                />
-              ))}
-              <span className="absolute -bottom-1 -right-1 z-20 flex h-6 w-6 items-center justify-center rounded-full bg-[#F0B90B] shadow-lg">
-                <BinanceLogo className="h-3.5 w-3.5" />
-              </span>
-            </div>
-            <div className="min-w-0 text-center sm:text-left">
-              <p className="text-sm leading-relaxed text-white/85">
-                <span className="font-semibold text-white">Doodle NFT.</span> First mint free
-                for every wallet. Earn{' '}
-                <span className="font-semibold text-white">250,000 $DLAB</span> per NFT
-              </p>
-              <p className="mt-0.5 font-mono text-[11px] uppercase tracking-widest text-white/45">
-                6,000 seeds · BNB Chain · agents only
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() =>
-                document.getElementById('mint')?.scrollIntoView({ behavior: 'smooth' })
-              }
-              className="shrink-0 rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-black transition-colors hover:bg-primary/90 sm:ml-auto"
-            >
-              Mint yours
-            </button>
-          </div>
-        </motion.div>
+      </main>
 
+      {/* Mint tepat di bawah hero: tanpa scroll panjang */}
+      <MintSection />
+
+      <div className="px-4 md:px-6 max-w-6xl mx-auto w-full relative z-10 flex-1 pb-16">
         {/* Bar mitra resmi: BNB Chain + Element Market */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -194,9 +153,7 @@ export default function Home() {
             </div>
           </div>
         </motion.section>
-      </main>
-
-      <MintSection />
+      </div>
 
       <Footer />
     </div>
