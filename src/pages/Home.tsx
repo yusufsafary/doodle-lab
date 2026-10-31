@@ -53,6 +53,9 @@ export default function Home() {
       {/* Mint tepat di bawah hero: tanpa scroll panjang */}
       <MintSection />
 
+
+      <MarketSection />
+
       {/* Ticker fakta koleksi: tipis, berjalan, berhenti saat disentuh kursor */}
       <div
         aria-hidden
@@ -81,8 +84,6 @@ export default function Home() {
           ))}
         </div>
       </div>
-
-      <MarketSection />
 
       <div className="px-4 md:px-6 max-w-6xl mx-auto w-full relative z-10 flex-1 pb-16">
         {/* Produk utama: studio sebagai utilitas, ringkas */}

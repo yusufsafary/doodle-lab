@@ -7,8 +7,8 @@ const ART_BASE = `${import.meta.env.BASE_URL}metadata/art/`;
 const LISTINGS = [8, 13, 70, 9, 10, 16];
 const MANNERS = ['Fantasy', 'Realistic', 'Anime', 'Abstract'];
 
-// Pasar terkunci sampai 1 November 2026 pukul 00.00 WIB, lalu terbuka sendiri.
-const UNLOCK_AT = new Date('2026-11-01T00:00:00+07:00').getTime();
+// Pasar terkunci sampai 1 November 2026 pukul 06.18 WIB (12 jam sejak perintah Yusup 31 Okt 18:18), lalu terbuka sendiri.
+const UNLOCK_AT = new Date('2026-11-01T06:18:00+07:00').getTime();
 
 function countdownLabel(ms: number): string {
   const totalMinutes = Math.max(0, Math.floor(ms / 60000));
@@ -104,7 +104,7 @@ export function MarketSection() {
                 </span>
                 <p className="mt-4 text-2xl font-bold tracking-tight">Market locked</p>
                 <p className="mt-1.5 max-w-sm text-sm leading-relaxed text-white/70">
-                  Trading opens tomorrow, 1 November 2026, at 00.00 WIB. Mint today, trade
+                  Trading opens tomorrow, 1 November 2026, at 06.18 WIB. Mint today, trade
                   tomorrow.
                 </p>
                 <span className="mt-4 rounded-full bg-white/10 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-white">
