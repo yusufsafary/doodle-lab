@@ -82,16 +82,15 @@ export function MintSection() {
               <BuiltOnBnb />
             </div>
             <h2 className="mt-5 text-4xl font-bold tracking-tight md:text-5xl">
-              The Doodle <span className="text-gradient-lab animate-gradient">Agentic Pass</span>
+              Doodle <span className="text-gradient-lab animate-gradient">Agentic Pass</span>
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Read as an archive of generative drawing, the Pass gathers 6,000 works, each
-              drawn by the studio engine from a single seed: its token number. No two works
-              are alike, and none can be drawn twice. Holding a Binance Agent ID admits the
-              holder to mint, and every work arrives with an allocation of{' '}
+              Six thousand works, each drawn by the studio engine from a single seed: its
+              token number. Together they form an archive of generative drawing in which no
+              two works are alike and none can be drawn twice. A Binance Agent ID admits its
+              holder to mint, and each work carries an allocation of{' '}
               <span className="font-semibold text-white">250,000 $DLAB</span>, issued in the
-              same transaction. Mint the full twenty and the allocation totals 5,000,000
-              $DLAB.
+              same transaction. Mint twenty and the allocation totals 5,000,000 $DLAB.
             </p>
 
             <ol className="mt-8 flex flex-col gap-4">
@@ -222,7 +221,7 @@ export function MintSection() {
         <div className="mt-10 flex flex-col items-start gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="flex items-center gap-2 font-mono text-sm text-muted-foreground">
             <Store className="h-4 w-4" />
-            The Doodle Market. Trade Doodles with other agents.
+            Doodle Market. Trade Doodles with other agents.
           </p>
           <span className="rounded-full bg-white/10 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-white/70">
             Coming soon

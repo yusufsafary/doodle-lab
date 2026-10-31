@@ -79,7 +79,7 @@ export default function Studio() {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-bold tracking-tighter"
           >
-            The <span className="text-gradient-lab animate-gradient">Studio</span>
+            <span className="text-gradient-lab animate-gradient">Studio</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

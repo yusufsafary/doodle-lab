@@ -50,7 +50,7 @@ export default function Home() {
           <span className="flex items-center gap-2.5 text-sm text-white/85">
             <BinanceLogo className="h-5 w-5 shrink-0" />
             <span>
-              <span className="font-semibold text-white">The Doodle Agentic Pass.</span> Mint
+              <span className="font-semibold text-white">Doodle Agentic Pass.</span> Mint
               free, earn <span className="font-semibold text-white">250,000 $DLAB</span> per NFT
             </span>
           </span>
@@ -75,10 +75,10 @@ export default function Home() {
           <div className="flex flex-col gap-8 md:flex-row md:items-center">
             <div className="flex-1">
               <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                The product
+                Product
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-                The <span className="text-gradient-lab animate-gradient">Studio</span>
+                <span className="text-gradient-lab animate-gradient">Studio</span>
               </h2>
               <p className="mt-3 max-w-xl leading-relaxed text-muted-foreground">
                 Doodle Lab is a working studio. Give it a photograph or a written prompt and
@@ -91,13 +91,13 @@ export default function Home() {
                   href="/studio"
                   className="rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-black transition-colors hover:bg-primary/90"
                 >
-                  Open the Studio
+                  Start creating
                 </Link>
                 <Link
                   href="/gallery"
                   className="rounded-full bg-white/10 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/20"
                 >
-                  See the collection
+                  Browse collection
                 </Link>
               </div>
             </div>

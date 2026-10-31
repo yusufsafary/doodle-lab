@@ -45,7 +45,7 @@ export default function Gallery() {
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between mb-10">
           <div>
             <h1 className="text-3xl md:text-5xl font-bold tracking-tighter mb-2">
-              The <span className="text-primary">Collection</span>
+              <span className="text-primary">Collection</span>
             </h1>
             <p className="text-muted-foreground font-mono text-sm">
               6,000 works, each drawn by the Lab engine from its token seed. Showing the
@@ -119,9 +119,8 @@ export default function Gallery() {
         {/* Penutup: arsip penuh + jalur mint */}
         <div className="mt-12 flex flex-col items-center gap-4 text-center">
           <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-            The full archive of 6,000 works is published in the collection metadata. Each
-            work is minted free through a Binance Agent and carries its $DLAB allocation
-            with it.
+            All 6,000 works are published in the collection metadata. Each one is minted
+            free through a Binance Agent and carries its $DLAB allocation with it.
           </p>
           <button
             type="button"
