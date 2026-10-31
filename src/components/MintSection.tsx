@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BadgeCheck, Bot, Coins, Minus, Plus, Search, Shuffle } from "lucide-react";
-import { DLAB, checkWallet, readMintState, type MintState } from '@/config/dlab';
+import { DLAB, checkWallet, readMintState, subjectOf, type MintState } from '@/config/dlab';
 import { BuiltOnBnb, ElementLogo } from '@/components/BinanceLogo';
 
 const ADDRESS_RE = /^0x[0-9a-fA-F]{40}$/;
@@ -174,8 +174,8 @@ export function MintSection() {
                 <div className="min-w-0">
                   <p className="text-lg font-bold">Seed #{seed.toLocaleString('en-US')}</p>
                   <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                    {SEED_STYLES[seed % 4]} manner. Drawn once by the engine, never drawn
-                    again.
+                    {subjectOf(seed)} in the {SEED_STYLES[seed % 4]} manner. Drawn once by
+                    the engine, never drawn again.
                   </p>
                   <p className="mt-2 text-sm text-white/85">
                     Whoever mints it takes{' '}

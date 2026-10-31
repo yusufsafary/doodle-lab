@@ -12,6 +12,23 @@ export const DLAB = {
   skillUrl: 'https://yusufsafary.github.io/doodle-lab/doodle-skill.md',
 } as const;
 
+// Daftar subyek + hash yang SAMA PERSIS dengan generator artwork
+// (scripts/generate-art-v2.mjs) agar label subyek di web selalu cocok
+// dengan artwork dan metadata on-chain setiap token.
+export const SUBJECTS = [
+  'Dog', 'Cat', 'Owl', 'Fox', 'Whale', 'Mountain Lake', 'Lighthouse',
+  'Hot Air Balloon', 'Rocket', 'Castle', 'Great Tree', 'City Skyline',
+  'Koi', 'Butterfly', 'Sailboat', 'Panda',
+] as const;
+
+export function subjectOf(id: number): string {
+  let x = (id * 2654435761) >>> 0;
+  x ^= x >>> 15;
+  x = (x * 2246822519) >>> 0;
+  x ^= x >>> 13;
+  return SUBJECTS[(x >>> 0) % SUBJECTS.length];
+}
+
 export const BSC_RPCS = [
   'https://bsc-dataseed-public.bnbchain.org',
   'https://bsc-rpc.publicnode.com',

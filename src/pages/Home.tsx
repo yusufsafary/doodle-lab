@@ -5,6 +5,7 @@ import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { BinanceLogo, BnbChainLogo, ElementLogo } from '@/components/BinanceLogo';
 import { MintSection } from '@/components/MintSection';
+import { subjectOf } from '@/config/dlab';
 
 const FAN = [7, 123, 5555];
 const STYLE_TILES = [
@@ -167,7 +168,8 @@ export default function Home() {
                   Lab 1.0
                 </span>
                 <span className="absolute bottom-3 left-3 rounded-full bg-black/60 px-3 py-1 text-xs text-white backdrop-blur-sm">
-                  Seed #{activeStyle.id} · {activeStyle.style} manner
+                  Seed #{activeStyle.id} · {subjectOf(activeStyle.id)} · {activeStyle.style}{' '}
+                  manner
                 </span>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">

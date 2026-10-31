@@ -4,16 +4,18 @@ import { motion } from 'framer-motion';
 import { Eye } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import { useLocation } from 'wouter';
+import { subjectOf } from '@/config/dlab';
 
-// Koleksi asli Doodle Lab (DLAB): gaya setiap token mengikuti generator
-// metadata (STYLES[tokenId % 4] pada scripts/generate-metadata.mjs).
+// Koleksi asli Doodle Lab (DLAB): gaya dan subyek setiap token mengikuti
+// generator artwork v2 (STYLES[tokenId % 4] dan subjectOf pada
+// scripts/generate-art-v2.mjs, diport ke config/dlab).
 const COLLECTION_STYLES = ['Fantasy', 'Realistic', 'Anime', 'Abstract'] as const;
 const FILTERS = ['All', 'Abstract', 'Fantasy', 'Realistic', 'Anime'] as const;
 const SHOWN = 48;
 
 const works = Array.from({ length: SHOWN }, (_, i) => {
   const id = i + 1;
-  return { id, style: COLLECTION_STYLES[id % COLLECTION_STYLES.length] };
+  return { id, style: COLLECTION_STYLES[id % COLLECTION_STYLES.length], subject: subjectOf(id) };
 });
 
 const base = import.meta.env.BASE_URL;
@@ -48,8 +50,8 @@ export default function Gallery() {
               <span className="text-primary">Collection</span>
             </h1>
             <p className="text-muted-foreground font-mono text-sm">
-              6,000 works, each drawn by the Lab engine from its token seed. Showing the
-              first 48.
+              6,000 illustrated scenes drawn by the Lab engine from token seeds. Sixteen
+              subjects, from owls and whales to rockets and castles. Showing the first 48.
             </p>
           </div>
 
@@ -80,10 +82,18 @@ export default function Gallery() {
             >
               <img
                 src={`${base}metadata/art/${work.id}.svg`}
-                alt={`Doodle Lab #${work.id}`}
+                alt={`Doodle Lab #${work.id}: ${work.subject}`}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
+
+              {/* Keterangan selalu terlihat: subyek + nomor + manner */}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent p-3 pt-9">
+                <div className="text-xs font-semibold text-white">{work.subject}</div>
+                <div className="text-[11px] text-white/65">
+                  #{work.id} · {work.style} manner
+                </div>
+              </div>
 
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-4">
@@ -99,10 +109,10 @@ export default function Gallery() {
                   </a>
                 </div>
                 <div>
-                  <div className="text-xs font-mono text-primary mb-0.5">{work.style}</div>
+                  <div className="text-xs font-mono text-primary mb-0.5">{work.subject}</div>
                   <div className="font-semibold text-sm">Doodle Lab #{work.id}</div>
                   <div className="text-xs text-white/60 mt-0.5">
-                    Mint bonus 250,000 $DLAB
+                    {work.style} manner · Mint bonus 250,000 $DLAB
                   </div>
                 </div>
               </div>

@@ -4,7 +4,7 @@ For Binance Agents (Binance Agentic Wallet) minting Doodle Lab NFTs on BNB Chain
 
 ## Collection
 
-- **Doodle Lab (DLAB)**: 6,000 one-of-a-kind procedural doodle artworks.
+- **Doodle Lab (DLAB)**: 6,000 one-of-a-kind illustrated scenes: 16 subjects (dogs, owls, whales, rockets, castles and more), each drawn by the studio engine from its token seed.
 - The NFT price is 0. The **first mint of every wallet is free of the paid
   fee**: only a small anti-bot (anti-Sybil) fee in BNB applies to it. After
   that, mints are paid: a fixed per-NFT platform fee in BNB. Always read

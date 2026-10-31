@@ -93,8 +93,8 @@ def main():
     panel = 256
     gap = 14
     x0, y0 = 1200 - 2 * panel - gap - 40, (630 - (2 * panel + gap)) // 2
-    for i, tid in enumerate([7, 123, 2024, 5555]):
-        art = render_art(tid).resize((panel, panel), Image.LANCZOS)
+    for i, tid in enumerate([8, 13, 4, 10]):
+        art = Image.open(f'scripts/og_tiles/{tid}.png').convert('RGB').resize((panel, panel), Image.LANCZOS)
         px = x0 + (i % 2) * (panel + gap)
         py = y0 + (i // 2) * (panel + gap)
         card.paste(art, (px, py))
