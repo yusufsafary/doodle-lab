@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #926",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Hot Air Balloon in the Anime manner, drawn by the studio engine from seed 926. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/926.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Anime"
     },
     {
-      "trait_type": "Shapes",
-      "value": 6
+      "trait_type": "Subject",
+      "value": "Hot Air Balloon"
     },
     {
-      "trait_type": "Background",
-      "value": "#FF9A9E"
+      "trait_type": "Mood",
+      "value": "Day"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 926
     },
     {
       "trait_type": "Bonus",
