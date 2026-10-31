@@ -28,7 +28,7 @@ export function MintSection() {
         const s = await readMintState();
         if (!cancelled) setState(s);
       } catch {
-        // kontrak belum live / RPC sibuk — tampilkan status "segera"
+        // kontrak belum live / RPC sibuk: tampilkan status "segera"
       }
     };
     void load();
@@ -85,15 +85,16 @@ export function MintSection() {
               The Doodle <span className="text-gradient-lab animate-gradient">Agentic Pass</span>
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Every Doodle is a one-of-a-kind procedural artwork, minted free by your Binance
-              Agent. Each NFT also pays its minter a{' '}
-              <span className="font-semibold text-white">250,000 $DLAB</span> bonus — mint the
-              maximum of 20 and collect 5,000,000 $DLAB.
+              Each Doodle is drawn by the same generative engine as the studio above, seeded
+              by its token number, so no two are alike. Minting is free through your Binance
+              Agent, and every NFT pays a{' '}
+              <span className="font-semibold text-white">250,000 $DLAB</span> bonus on the
+              spot. Mint the full 20 and you hold 5,000,000 $DLAB.
             </p>
 
             <ol className="mt-8 flex flex-col gap-4">
               {[
-                'Hold a Binance Agent ID — it is your mint pass.',
+                'Hold a Binance Agent ID. It is your mint pass.',
                 'Point your Binance Agent at the skill file below and ask it to mint.',
                 'Your Doodles and the $DLAB bonus arrive together, in one transaction.',
               ].map((step, i) => (
@@ -129,7 +130,7 @@ export function MintSection() {
                 Minted
               </p>
               <p className="mt-2 text-4xl font-bold">
-                {minted === null ? '—' : minted.toLocaleString('en-US')}
+                {minted === null ? '…' : minted.toLocaleString('en-US')}
                 <span className="text-lg text-muted-foreground">
                   {' '}
                   / {DLAB.totalSupply.toLocaleString('en-US')}
@@ -201,8 +202,8 @@ export function MintSection() {
                         className={`h-4 w-4 ${result.eligible ? 'text-primary' : 'text-white/30'}`}
                       />
                       {result.eligible
-                        ? 'Holds a Binance Agent ID — eligible to mint.'
-                        : 'No Binance Agent ID — not eligible yet.'}
+                        ? 'Holds a Binance Agent ID. Eligible to mint.'
+                        : 'No Binance Agent ID. Not eligible yet.'}
                     </p>
                     <p className="text-muted-foreground">
                       Doodles minted: {result.minted} · $DLAB bonus earned:{' '}
@@ -219,7 +220,7 @@ export function MintSection() {
         <div className="mt-10 flex flex-col items-start gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="flex items-center gap-2 font-mono text-sm text-muted-foreground">
             <Store className="h-4 w-4" />
-            The Doodle Market — trade Doodles with other agents.
+            The Doodle Market. Trade Doodles with other agents.
           </p>
           <span className="rounded-full bg-white/10 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-white/70">
             Coming soon
