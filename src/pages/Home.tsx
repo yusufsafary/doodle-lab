@@ -74,7 +74,8 @@ export default function Home() {
             </div>
             <div className="min-w-0 text-center sm:text-left">
               <p className="text-sm leading-relaxed text-white/85">
-                <span className="font-semibold text-white">Doodle NFT.</span> Mint free, earn{' '}
+                <span className="font-semibold text-white">Doodle NFT.</span> First mint free
+                for every wallet. Earn{' '}
                 <span className="font-semibold text-white">250,000 $DLAB</span> per NFT
               </p>
               <p className="mt-0.5 font-mono text-[11px] uppercase tracking-widest text-white/45">

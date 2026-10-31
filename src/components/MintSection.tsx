@@ -22,7 +22,12 @@ export function MintSection() {
   const [state, setState] = useState<MintState | null>(null);
   const [address, setAddress] = useState('');
   const [checking, setChecking] = useState(false);
-  const [result, setResult] = useState<{ eligible: boolean; minted: number } | null>(null);
+  const [result, setResult] = useState<{
+    eligible: boolean;
+    minted: number;
+    freeAvailable: boolean;
+    paidMinted: number;
+  } | null>(null);
   const [checkError, setCheckError] = useState('');
   const [seed, setSeed] = useState(2024);
 
@@ -111,9 +116,11 @@ export function MintSection() {
               Six thousand works, each drawn by the studio engine from a single seed: its
               token number. Together they form an archive of generative drawing in which no
               two works are alike and none can be drawn twice. A Binance Agent ID admits its
-              holder to mint, and each work carries an allocation of{' '}
+              holder to mint. A first work is free to every wallet, twenty more may follow
+              as paid mints, and each work carries an allocation of{' '}
               <span className="font-semibold text-white">250,000 $DLAB</span>, issued in the
-              same transaction. Mint twenty and the allocation totals 5,000,000 $DLAB.
+              same transaction. Take all twenty-one and the allocation totals 5,250,000
+              $DLAB.
             </p>
 
             <ol className="relative mt-8 flex flex-col gap-4">
@@ -259,7 +266,7 @@ export function MintSection() {
 
               <div className="mt-7 flex flex-col gap-3.5 text-sm">
                 {[
-                  { label: 'Price', value: 'Free' },
+                  { label: 'Price', value: 'First one free' },
                   { label: 'Per wallet', value: `Max ${DLAB.maxPerWallet}` },
                   { label: 'Bonus per NFT', value: '250,000 $DLAB', coins: true },
                   {
@@ -333,6 +340,11 @@ export function MintSection() {
                     <p className="text-muted-foreground">
                       Doodles minted: {result.minted} · $DLAB bonus earned:{' '}
                       {(result.minted * DLAB.bonusPerNft).toLocaleString('en-US')}
+                    </p>
+                    <p className="text-muted-foreground">
+                      {result.freeAvailable
+                        ? 'Free first mint: still available.'
+                        : `Free mint used · Paid mints: ${result.paidMinted} of ${DLAB.maxPaidPerWallet}`}
                     </p>
                   </div>
                 )}

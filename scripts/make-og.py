@@ -108,7 +108,7 @@ def main():
     f_h = ImageFont.truetype(bold, 40)
     draw.text((56, 268), 'Doodle NFT', font=f_h, fill=(255, 255, 255))
     f_p = ImageFont.truetype(regular, 30)
-    draw.text((56, 336), 'Mint free. Earn 250,000 $DLAB', font=f_p, fill=(190, 190, 190))
+    draw.text((56, 336), 'First mint free. Earn 250,000 $DLAB', font=f_p, fill=(190, 190, 190))
     draw.text((56, 376), 'per NFT.', font=f_p, fill=(190, 190, 190))
 
     # Lockup BNB di kiri bawah

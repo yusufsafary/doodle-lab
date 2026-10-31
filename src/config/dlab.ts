@@ -2,10 +2,11 @@
 // Alamat di bawah adalah alamat prediksi CREATE2 dari artefak deploy final
 // (deploy-info-dlab.json); terkonfirmasi persis saat deploy dieksekusi.
 export const DLAB = {
-  nftAddress: '0x0273B4D4D734513A7DAa75FEEf290B201Bf7E73E',
+  nftAddress: '0x06B3299b46dc39Def79f18A287A6e6db43715013',
   tokenAddress: '0x1b29D8523198c06BF6Ca0298eaAf0346239644c2',
   totalSupply: 6000,
-  maxPerWallet: 20,
+  maxPerWallet: 21, // 1 free + 20 paid
+  maxPaidPerWallet: 20,
   bonusPerNft: 250000,
   bonusPool: 1500000000,
   skillUrl: 'https://yusufsafary.github.io/doodle-lab/doodle-skill.md',
@@ -75,13 +76,23 @@ export async function readMintState(): Promise<MintState> {
   };
 }
 
-export async function checkWallet(address: string): Promise<{ eligible: boolean; minted: number }> {
+export interface WalletCheck {
+  eligible: boolean;
+  minted: number;
+  freeAvailable: boolean;
+  paidMinted: number;
+}
+
+export async function checkWallet(address: string): Promise<WalletCheck> {
   const [holdsHex, mintedHex] = await Promise.all([
     ethCall(DLAB.nftAddress, SELECTORS.holdsAgentId + padAddress(address)),
     ethCall(DLAB.nftAddress, SELECTORS.mintedBy + padAddress(address)),
   ]);
+  const minted = Number(decodeUint(mintedHex));
   return {
     eligible: decodeUint(holdsHex) === 1n,
-    minted: Number(decodeUint(mintedHex)),
+    minted,
+    freeAvailable: minted === 0,
+    paidMinted: minted === 0 ? 0 : minted - 1,
   };
 }
