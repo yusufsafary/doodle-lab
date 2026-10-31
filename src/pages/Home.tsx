@@ -3,7 +3,7 @@ import { TopNav } from '@/components/TopNav';
 import { Footer } from '@/components/Footer';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { BinanceLogo } from '@/components/BinanceLogo';
+import { BinanceLogo, BnbChainLogo, ElementLogo } from '@/components/BinanceLogo';
 import { MintSection } from '@/components/MintSection';
 
 const FAN = [7, 123, 5555];
@@ -92,6 +92,31 @@ export default function Home() {
               Mint yours
             </button>
           </div>
+        </motion.div>
+
+        {/* Bar mitra resmi: BNB Chain + Element Market */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.18 }}
+          className="mb-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5 backdrop-blur-sm"
+        >
+          <span className="flex items-center gap-2.5">
+            <BnbChainLogo className="h-6 w-6 shrink-0" />
+            <span className="text-sm text-white/85">
+              Built on <span className="font-bold text-white">BNB Chain</span>
+            </span>
+          </span>
+          <span aria-hidden className="hidden h-6 w-px bg-white/10 sm:block" />
+          <span className="flex items-center gap-2.5">
+            <ElementLogo className="h-6 w-6 shrink-0 object-contain" />
+            <span className="text-sm text-white/85">
+              Doodle Market on <span className="font-bold text-white">Element</span>
+            </span>
+            <span className="rounded-full bg-white/10 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-widest text-white/60">
+              Soon
+            </span>
+          </span>
         </motion.div>
 
         {/* Produk utama: studio sebagai utilitas, ringkas */}
