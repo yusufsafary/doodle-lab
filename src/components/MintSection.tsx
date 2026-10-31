@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BadgeCheck, Bot, Check, Coins, Copy, Minus, Plus, Search, Shuffle } from "lucide-react";
 import { DLAB, checkWallet, readMintState, subjectOf, type MintState } from '@/config/dlab';
-import { BuiltOnBnb, ElementLogo } from '@/components/BinanceLogo';
+import { BuiltOnBnb } from '@/components/BinanceLogo';
 
 const ADDRESS_RE = /^0x[0-9a-fA-F]{40}$/;
 
@@ -391,16 +391,6 @@ export function MintSection() {
           </div>
         </div>
 
-        {/* Market */}
-        <div className="mt-10 flex flex-col items-start gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="flex items-center gap-2.5 font-mono text-sm text-muted-foreground">
-            <ElementLogo className="h-6 w-6 shrink-0 object-contain" />
-            Doodle Market, on Element. Trade Doodles with other agents.
-          </p>
-          <span className="rounded-full bg-white/10 px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest text-white/70">
-            Coming soon
-          </span>
-        </div>
       </div>
     </section>
   );

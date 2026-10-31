@@ -3,8 +3,8 @@ import { TopNav } from '@/components/TopNav';
 import { Footer } from '@/components/Footer';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { BnbChainLogo, ElementLogo } from '@/components/BinanceLogo';
 import { MintSection } from '@/components/MintSection';
+import { MarketSection } from '@/components/MarketSection';
 import { subjectOf } from '@/config/dlab';
 
 const STYLE_TILES = [
@@ -30,11 +30,11 @@ export default function Home() {
       <main className="pt-32 md:pt-40 px-4 md:px-6 max-w-6xl mx-auto w-full relative z-10">
 
         {/* Header */}
-        <div className="text-center mb-8 md:mb-10 space-y-4">
+        <div className="text-center mb-6 md:mb-8 space-y-4">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-8xl font-bold tracking-tighter"
+            className="text-4xl md:text-6xl font-bold tracking-tighter"
           >
             <span className="text-gradient-lab animate-gradient block">Create with us.</span>
           </motion.h1>
@@ -42,7 +42,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-lg md:text-2xl text-muted-foreground font-mono"
+            className="text-base md:text-xl text-muted-foreground font-mono"
           >
             Reimagine anything with Lab 1.0
           </motion.p>
@@ -53,32 +53,38 @@ export default function Home() {
       {/* Mint tepat di bawah hero: tanpa scroll panjang */}
       <MintSection />
 
-      <div className="px-4 md:px-6 max-w-6xl mx-auto w-full relative z-10 flex-1 pb-16">
-        {/* Bar mitra resmi: BNB Chain + Element Market */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.18 }}
-          className="mb-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3.5 backdrop-blur-sm"
-        >
-          <span className="flex items-center gap-2.5">
-            <BnbChainLogo className="h-6 w-6 shrink-0" />
-            <span className="text-sm text-white/85">
-              Built on <span className="font-bold text-white">BNB Chain</span>
-            </span>
-          </span>
-          <span aria-hidden className="hidden h-6 w-px bg-white/10 sm:block" />
-          <span className="flex items-center gap-2.5">
-            <ElementLogo className="h-6 w-6 shrink-0 object-contain" />
-            <span className="text-sm text-white/85">
-              Doodle Market on <span className="font-bold text-white">Element</span>
-            </span>
-            <span className="rounded-full bg-white/10 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-widest text-white/60">
-              Soon
-            </span>
-          </span>
-        </motion.div>
+      {/* Ticker fakta koleksi: tipis, berjalan, berhenti saat disentuh kursor */}
+      <div
+        aria-hidden
+        className="relative z-10 mb-16 overflow-hidden border-y border-white/10 bg-white/[0.02] py-3 [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
+      >
+        <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex shrink-0 items-center">
+              {[
+                'First mint free',
+                '250,000 $DLAB with every NFT',
+                '6,000 seeds, drawn once each',
+                'Agents only, Agent ID required',
+                'Holder airdrop: $10,000 in BNB',
+                'Minted live on BNB Chain',
+              ].map((t) => (
+                <span
+                  key={t}
+                  className="flex items-center font-mono text-xs font-bold uppercase tracking-widest text-white/60"
+                >
+                  <span className="px-5">{t}</span>
+                  <span className="h-1.5 w-1.5 rotate-45 bg-[#F0B90B]" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
 
+      <MarketSection />
+
+      <div className="px-4 md:px-6 max-w-6xl mx-auto w-full relative z-10 flex-1 pb-16">
         {/* Produk utama: studio sebagai utilitas, ringkas */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
