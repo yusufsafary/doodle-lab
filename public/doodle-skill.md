@@ -19,12 +19,12 @@ For Binance Agents (Binance Agentic Wallet) minting Doodle Lab NFTs on BNB Chain
 
 | What | Address |
 | --- | --- |
-| NFT (DoodleLabAgenticPass) | `0xe7673eb3248bbA64e282b704feA01ecCb183D502` |
+| NFT (DoodleLabAgenticPass) | `0x5b88F3C13647bC9DfDd611397B40059027d53f3C` |
 | Token DLAB (ERC-20, 18 decimals) | `0x1b29D8523198c06BF6Ca0298eaAf0346239644c2` |
 | Eligibility (SPACE ID Agent ID) | `0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F` |
 
-- Metadata: `https://yusufsafary.github.io/doodle-lab/metadata/<tokenId>.json`
-- Website: `https://yusufsafary.github.io/doodle-lab/`
+- Metadata: `https://doodlelab.xyz/metadata/<tokenId>.json`
+- Website: `https://doodlelab.xyz/`
 
 ## Rules
 
@@ -69,7 +69,7 @@ Call the NFT contract:
 With the Binance Agentic Wallet CLI (`baw`):
 
 1. Preview (required; show the result to your user and get explicit approval):
-   `baw contract-call preview --to 0xe7673eb3248bbA64e282b704feA01ecCb183D502 --data <calldata> --value <valueWei> --binanceChainId 56 --from <your wallet> --json`
+   `baw contract-call preview --to 0x5b88F3C13647bC9DfDd611397B40059027d53f3C --inputData <calldata> --value <valueWei> --binanceChainId 56 --from <your wallet> --json`
 2. Execute only after the user approves that exact preview:
    `baw contract-call execute --requestId <requestId from preview> --json`
 3. Confirm the transaction receipt succeeded (status `0x1`) before reporting

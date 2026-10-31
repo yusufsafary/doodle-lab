@@ -6,8 +6,8 @@
     <script>
       // GitHub Pages SPA fallback: bounce deep links back to index.html with
       // the path encoded in the query string; index.html restores it.
-      // pathSegmentsToKeep = 1 keeps the /doodle-lab/ project subpath.
-      var pathSegmentsToKeep = 1;
+      // pathSegmentsToKeep = 0: situs kini di root custom domain doodlelab.xyz.
+      var pathSegmentsToKeep = 0;
       var l = window.location;
       l.replace(
         l.protocol +

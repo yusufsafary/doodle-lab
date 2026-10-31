@@ -2,14 +2,14 @@
 // Alamat di bawah adalah alamat prediksi CREATE2 dari artefak deploy final
 // (deploy-info-dlab.json); terkonfirmasi persis saat deploy dieksekusi.
 export const DLAB = {
-  nftAddress: '0xe7673eb3248bbA64e282b704feA01ecCb183D502',
+  nftAddress: '0x5b88F3C13647bC9DfDd611397B40059027d53f3C',
   tokenAddress: '0x1b29D8523198c06BF6Ca0298eaAf0346239644c2',
   totalSupply: 6000,
   maxPerWallet: 21, // 1 free + 20 paid
   maxPaidPerWallet: 20,
   bonusPerNft: 250000,
   bonusPool: 1500000000,
-  skillUrl: 'https://yusufsafary.github.io/doodle-lab/doodle-skill.md',
+  skillUrl: 'https://doodlelab.xyz/doodle-skill.md',
 } as const;
 
 // Daftar subyek + hash yang SAMA PERSIS dengan generator artwork

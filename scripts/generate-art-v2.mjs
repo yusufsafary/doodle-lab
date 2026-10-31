@@ -13,7 +13,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ART_DIR = join(ROOT, 'public', 'metadata', 'art');
 const META_DIR = join(ROOT, 'public', 'metadata');
-const SITE = 'https://yusufsafary.github.io/doodle-lab';
+const SITE = 'https://doodlelab.xyz';
 export const SUBJECTS = [
   'Dog', 'Cat', 'Owl', 'Fox', 'Whale', 'Mountain Lake', 'Lighthouse',
   'Hot Air Balloon', 'Rocket', 'Castle', 'Great Tree', 'City Skyline',
