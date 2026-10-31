@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #1022",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Cat in the Anime manner, drawn by the studio engine from seed 1022. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/1022.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Anime"
     },
     {
-      "trait_type": "Shapes",
-      "value": 14
+      "trait_type": "Subject",
+      "value": "Cat"
     },
     {
-      "trait_type": "Background",
-      "value": "#FF9A9E"
+      "trait_type": "Mood",
+      "value": "Day"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 1022
     },
     {
       "trait_type": "Bonus",
