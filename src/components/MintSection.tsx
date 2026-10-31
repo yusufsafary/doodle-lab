@@ -6,6 +6,10 @@ const ADDRESS_RE = /^0x[0-9a-fA-F]{40}$/;
 
 function formatTokens(raw: bigint): string {
   const whole = raw / 10n ** 18n;
+  if (whole >= 1_000_000_000n) {
+    const billions = Number(whole) / 1e9;
+    return `${billions.toLocaleString('en-US', { maximumFractionDigits: 2 })}B`;
+  }
   return whole.toLocaleString('en-US');
 }
 
@@ -155,7 +159,7 @@ export function MintSection() {
                     Bonus left
                   </dt>
                   <dd className="mt-1 font-bold text-white">
-                    {state ? `${formatTokens(state.bonusRemaining)} $DLAB` : '1,500,000,000 $DLAB'}
+                    {state ? `${formatTokens(state.bonusRemaining)} $DLAB` : '1.5B $DLAB'}
                   </dd>
                 </div>
               </dl>
