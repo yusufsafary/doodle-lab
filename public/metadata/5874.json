@@ -1,0 +1,23 @@
+{
+  "name": "Doodle Lab #5874",
+  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/5874.svg",
+  "attributes": [
+    {
+      "trait_type": "Style",
+      "value": "Anime"
+    },
+    {
+      "trait_type": "Shapes",
+      "value": 9
+    },
+    {
+      "trait_type": "Background",
+      "value": "#FF9A9E"
+    },
+    {
+      "trait_type": "Bonus",
+      "value": "250,000 DLAB"
+    }
+  ]
+}
