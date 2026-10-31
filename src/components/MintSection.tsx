@@ -223,51 +223,65 @@ export function MintSection() {
           {/* Kanan: status live + cek wallet */}
           <div className="w-full shrink-0 lg:w-[380px]">
             <div className="rounded-2xl border border-white/10 bg-black/40 p-5 md:p-6">
-              <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                Minted
-              </p>
-              <p className="mt-2 text-4xl font-bold">
-                {minted === null ? '…' : minted.toLocaleString('en-US')}
-                <span className="text-lg text-muted-foreground">
+              <div className="flex items-center justify-between gap-3">
+                <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
+                  Minted so far
+                </p>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-white/40">
+                  Read from chain
+                </span>
+              </div>
+              <p className="mt-3 text-5xl font-bold tracking-tight">
+                <span className="text-gradient-lab animate-gradient">
+                  {minted === null ? '…' : minted.toLocaleString('en-US')}
+                </span>
+                <span className="text-xl text-muted-foreground">
                   {' '}
                   / {DLAB.totalSupply.toLocaleString('en-US')}
                 </span>
               </p>
-              <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-white/10">
-                <div
-                  className="h-full rounded-full bg-primary transition-all duration-700"
-                  style={{ width: `${progress}%` }}
-                />
+              <div aria-hidden className="mt-5 flex gap-[2px]">
+                {Array.from({ length: 48 }).map((_, i) => (
+                  <span
+                    key={i}
+                    className={`h-3 flex-1 rounded-[2px] transition-colors duration-700 ${
+                      i < Math.round((progress / 100) * 48) ? 'bg-primary' : 'bg-white/10'
+                    }`}
+                  />
+                ))}
               </div>
+              <p className="mt-2.5 font-mono text-[11px] uppercase tracking-widest text-white/45">
+                {minted === null
+                  ? 'Reading the chain…'
+                  : `${progress.toFixed(1)}% of the archive claimed`}
+              </p>
 
-              <dl className="mt-6 grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <dt className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Price</dt>
-                  <dd className="mt-1 font-bold text-white">Free</dd>
-                </div>
-                <div>
-                  <dt className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    Per wallet
-                  </dt>
-                  <dd className="mt-1 font-bold text-white">Max {DLAB.maxPerWallet}</dd>
-                </div>
-                <div>
-                  <dt className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    Bonus / NFT
-                  </dt>
-                  <dd className="mt-1 flex items-center gap-1.5 font-bold text-white">
-                    <Coins className="h-4 w-4" /> 250,000 $DLAB
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    Bonus left
-                  </dt>
-                  <dd className="mt-1 font-bold text-white">
-                    {state ? `${formatTokens(state.bonusRemaining)} $DLAB` : '1.5B $DLAB'}
-                  </dd>
-                </div>
-              </dl>
+              <div className="mt-7 flex flex-col gap-3.5 text-sm">
+                {[
+                  { label: 'Price', value: 'Free' },
+                  { label: 'Per wallet', value: `Max ${DLAB.maxPerWallet}` },
+                  { label: 'Bonus per NFT', value: '250,000 $DLAB', coins: true },
+                  {
+                    label: 'Bonus pool left',
+                    value: state ? `${formatTokens(state.bonusRemaining)} $DLAB` : '1.5B $DLAB',
+                  },
+                ].map((row) => (
+                  <div key={row.label} className="flex items-baseline gap-2">
+                    <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                      {row.label}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="flex-1 -translate-y-1 border-b border-dotted border-white/25"
+                    />
+                    <span className="flex items-center gap-1.5 font-bold text-white">
+                      {row.coins && <Coins className="h-4 w-4" />}
+                      {row.value}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
               <div className="mt-6 -rotate-1 rounded-xl border border-dashed border-primary/50 bg-primary/10 px-4 py-3">
                 <p className="font-mono text-[11px] uppercase tracking-widest text-primary">
@@ -278,10 +292,15 @@ export function MintSection() {
                 </p>
               </div>
 
-              <div className="mt-6 border-t border-white/10 pt-5">
-                <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                  Check a wallet
-                </p>
+              <div className="mt-7 rounded-xl border border-dashed border-white/15 p-4">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                    Check a wallet
+                  </p>
+                  <span className="font-mono text-[11px] uppercase tracking-widest text-white/40">
+                    Form 01
+                  </span>
+                </div>
                 <div className="mt-3 flex flex-col gap-2">
                   <input
                     value={address}
