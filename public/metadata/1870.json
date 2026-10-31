@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #1870",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Castle in the Anime manner, drawn by the studio engine from seed 1870. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/1870.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Anime"
     },
     {
-      "trait_type": "Shapes",
-      "value": 12
+      "trait_type": "Subject",
+      "value": "Castle"
     },
     {
-      "trait_type": "Background",
-      "value": "#FF9A9E"
+      "trait_type": "Mood",
+      "value": "Dawn"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 1870
     },
     {
       "trait_type": "Bonus",
