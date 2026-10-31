@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #5191",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Great Tree in the Abstract manner, drawn by the studio engine from seed 5191. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/5191.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Abstract"
     },
     {
-      "trait_type": "Shapes",
-      "value": 6
+      "trait_type": "Subject",
+      "value": "Great Tree"
     },
     {
-      "trait_type": "Background",
-      "value": "#000000"
+      "trait_type": "Mood",
+      "value": "Dawn"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 5191
     },
     {
       "trait_type": "Bonus",
