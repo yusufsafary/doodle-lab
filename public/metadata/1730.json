@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #1730",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Fox in the Anime manner, drawn by the studio engine from seed 1730. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/1730.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Anime"
     },
     {
-      "trait_type": "Shapes",
-      "value": 6
+      "trait_type": "Subject",
+      "value": "Fox"
     },
     {
-      "trait_type": "Background",
-      "value": "#FF9A9E"
+      "trait_type": "Mood",
+      "value": "Dawn"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 1730
     },
     {
       "trait_type": "Bonus",
