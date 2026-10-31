@@ -32,6 +32,18 @@ export function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Reimagine anything.
             </p>
+            <a
+              href="https://x.com/doodlelabxyz"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Doodle Lab on X"
+              className="mt-1 inline-flex w-max items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-white"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+              </svg>
+              @doodlelabxyz
+            </a>
             <p className="text-xs text-white/30 mt-2">
               2026 Doodle Lab. All rights reserved.
             </p>
