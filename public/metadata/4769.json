@@ -1,6 +1,6 @@
 {
   "name": "Doodle Lab #4769",
-  "description": "A one-of-a-kind procedural doodle from Doodle Lab on BNB Chain. Minting this NFT paid its minter a 250,000 $DLAB bonus.",
+  "description": "An original illustrated scene from Doodle Lab on BNB Chain: Panda in the Realistic manner, drawn by the studio engine from seed 4769. Minting this NFT pays its minter a 250,000 $DLAB bonus.",
   "image": "https://yusufsafary.github.io/doodle-lab/metadata/art/4769.svg",
   "attributes": [
     {
@@ -8,12 +8,16 @@
       "value": "Realistic"
     },
     {
-      "trait_type": "Shapes",
-      "value": 8
+      "trait_type": "Subject",
+      "value": "Panda"
     },
     {
-      "trait_type": "Background",
-      "value": "#2C3E50"
+      "trait_type": "Mood",
+      "value": "Day"
+    },
+    {
+      "trait_type": "Seed",
+      "value": 4769
     },
     {
       "trait_type": "Bonus",
