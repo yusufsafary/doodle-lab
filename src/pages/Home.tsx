@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import { Upload, Image as ImageIcon, Sparkles, Download, Link as LinkIcon, Info, ChevronDown, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CanvasArt } from '@/components/CanvasArt';
+import { BinanceLogo } from '@/components/BinanceLogo';
 import { MintSection } from '@/components/MintSection';
 import { useToast } from '@/hooks/use-toast';
 
@@ -91,6 +92,31 @@ export default function Home() {
             Reimagine anything with Lab 1.0
           </motion.p>
         </div>
+
+        {/* Agentic Pass strip: jalur cepat ke section mint */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15 }}
+          className="mb-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-sm"
+        >
+          <span className="flex items-center gap-2.5 text-sm text-white/85">
+            <BinanceLogo className="h-5 w-5 shrink-0" />
+            <span>
+              <span className="font-semibold text-white">The Doodle Agentic Pass</span> — mint
+              free, earn <span className="font-semibold text-white">250,000 $DLAB</span> per NFT
+            </span>
+          </span>
+          <button
+            type="button"
+            onClick={() =>
+              document.getElementById('mint')?.scrollIntoView({ behavior: 'smooth' })
+            }
+            className="rounded-full bg-primary px-4 py-2 text-sm font-bold text-black transition-colors hover:bg-primary/90"
+          >
+            Mint yours
+          </button>
+        </motion.div>
 
         {/* Steps: 1 col mobile, 3 col sm+ */}
         <motion.div

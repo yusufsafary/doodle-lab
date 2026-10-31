@@ -11,7 +11,20 @@ const navLinks = [
 
 export function TopNav() {
   const [open, setOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, navigate] = useLocation();
+
+  // Lompat ke section mint di beranda (dari halaman mana pun)
+  const goMint = () => {
+    setOpen(false);
+    const scroll = () =>
+      document.getElementById('mint')?.scrollIntoView({ behavior: 'smooth' });
+    if (location !== '/') {
+      navigate('/');
+      setTimeout(scroll, 450);
+    } else {
+      scroll();
+    }
+  };
 
   // Close menu on route change
   useEffect(() => { setOpen(false); }, [location]);
@@ -38,6 +51,13 @@ export function TopNav() {
               {link.label}
             </Link>
           ))}
+          <button
+            type="button"
+            onClick={goMint}
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-white"
+          >
+            Mint
+          </button>
         </div>
 
         <div className="hidden md:flex items-center gap-3">
@@ -91,6 +111,14 @@ export function TopNav() {
                 {link.label}
               </Link>
             ))}
+            <button
+              type="button"
+              onClick={goMint}
+              className="py-2 text-left text-4xl font-bold tracking-tight text-white/80 transition-colors hover:text-white"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              Mint
+            </button>
           </nav>
 
           {/* Auth buttons */}

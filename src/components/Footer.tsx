@@ -1,4 +1,5 @@
 import { Link } from 'wouter';
+import { BuiltOnBnb } from '@/components/BinanceLogo';
 
 export function Footer() {
   return (
@@ -66,9 +67,7 @@ export function Footer() {
           <p className="text-xs text-white/20" style={{ fontFamily: 'Space Mono, monospace' }}>
             Built with Lab 1.0
           </p>
-          <a href="https://orynth.dev/projects/doodle-lab-5027" target="_blank" rel="noopener">
-            <img src="https://orynth.dev/api/badge/doodle-lab-5027?theme=dark&style=default" alt="Featured on Orynth" width="200" height="62" />
-          </a>
+          <BuiltOnBnb />
         </div>
       </div>
     </footer>

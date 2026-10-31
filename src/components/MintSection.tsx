@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BadgeCheck, Bot, Coins, Search, Store } from 'lucide-react';
 import { DLAB, checkWallet, readMintState, type MintState } from '@/config/dlab';
+import { BuiltOnBnb } from '@/components/BinanceLogo';
 
 const ADDRESS_RE = /^0x[0-9a-fA-F]{40}$/;
 
@@ -61,19 +62,25 @@ export function MintSection() {
   };
 
   return (
-    <section className="relative z-10 mx-auto w-full max-w-6xl px-4 pb-20 pt-4 md:pb-28">
+    <section
+      id="mint"
+      className="relative z-10 mx-auto w-full max-w-6xl scroll-mt-24 px-4 pb-20 pt-4 md:pb-28"
+    >
       <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm md:p-10">
         <div className="flex flex-col gap-10 lg:flex-row lg:gap-14">
           {/* Kiri: penjelasan + langkah agen */}
           <div className="flex-1">
-            <span
-              className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest ${
-                live ? 'bg-primary text-black' : 'bg-white/10 text-white/70'
-              }`}
-            >
-              <span className={`h-2 w-2 rounded-full ${live ? 'bg-black' : 'bg-white/50'}`} />
-              {live ? 'Mint live' : 'Mint opening soon'}
-            </span>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+              <span
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-xs font-bold uppercase tracking-widest ${
+                  live ? 'bg-primary text-black' : 'bg-white/10 text-white/70'
+                }`}
+              >
+                <span className={`h-2 w-2 rounded-full ${live ? 'bg-black' : 'bg-white/50'}`} />
+                {live ? 'Mint live' : 'Mint opening soon'}
+              </span>
+              <BuiltOnBnb />
+            </div>
             <h2 className="mt-5 text-4xl font-bold tracking-tight md:text-5xl">
               The Doodle <span className="text-gradient-lab animate-gradient">Agentic Pass</span>
             </h2>
